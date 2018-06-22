@@ -1,0 +1,19 @@
+<h2 class="header">Admin</h2>
+<form (submit)="OnAddNewLabSubmit()">
+<div class="form-group">
+  <label>Lab name</label>
+  <input type="text" class="form-control" [(ngModel)]="labname" name="labname">
+  </div>
+  <div class="form-group">
+    <label>Amount of Students</label>
+    <input type="number" class="form-control" [(ngModel)]="amount" name="amount">
+    </div>
+<input type="submit" class="btn btn-primary" value="Add Lab">
+
+</form>
+
+
+
+
+
+

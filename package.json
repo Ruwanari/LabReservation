@@ -1,0 +1,27 @@
+{
+  "name": "labresucsc",
+  "version": "1.0.0",
+  "description": "My First",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "ng": "0.0.0-rc6",
+    "nodemon": "^1.17.5",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Maheshika",
+  "license": "ISC",
+  "devDependancies": {
+    "@anguar/cli": "^1.6.0"
+  }
+}
