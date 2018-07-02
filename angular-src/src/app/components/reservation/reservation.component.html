@@ -1,25 +1,28 @@
-
-<h2 class="page-header">Reservation</h2>
-<form (submit)="onReservationSubmit()">
-  <div class="form-group">
-    <label>Lab</label>
-  <select type="text" class="form-control" [(ngModel)]="labname" name="labname">
-    <option class="dropdown-item" value="Third Year Lab">Third Year Lab</option>
-    <option class="dropdown-item" value="Fourth Year Lab">Fourth Year Lab</option>
-    <option class="dropdown-item" value="Lab A">Lab A</option>
-    <option class="dropdown-item" value="Lab B">Lab B</option>
-    <option class="dropdown-item" value="Lab C">Lab C</option>
+<div class="jumbotron ">
+<h2 class="page-header" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align: center; color: black;">Add reservation</h2>
+<form (submit)="checkReservationConflict()">
+  <div *ngIf='lablist' class="form-group">
+    
+  <select type="text" class="form-control" [(ngModel)]="labname" name="labname" >
+    <option value="" disabled selected>Select Lab</option>
+    <option *ngFor='let x of lablist' class="dropdown-item" value="{{x.labname}}">{{x.labname}}</option>
+    
   </select>
 </div>
 
 <div class="form-group">
-  <label>Date</label>
-  <input type="date" class="form-control" [(ngModel)]="date" name="date">
+  
+  <input type="date" class="form-control" [(ngModel)]="date" name="date" >
 </div>
 
+
+
+
+
 <div class="form-group">
-  <label>Time Slot</label>
-<select type="text" class="form-control" [(ngModel)]="timeslot" name="timeslot">
+<label>&nbsp; &nbsp; Time slot</label>
+<select  type="text" class="form-control" [(ngModel)]="timeslot" name="timeslot">
+  
   <option class="dropdown-item" value="08.00 A.M - 09.00 A.M">08.00 A.M - 09.00 A.M</option>
   <option class="dropdown-item" value="09.00 A.M - 10.00 A.M">09.00 A.M - 10.00 A.M</option>
   <option class="dropdown-item" value="10.00 A.M - 11.00 A.M">10.00 A.M - 11.00 A.M</option>
@@ -34,5 +37,186 @@
 
 
 
-<input type="submit" class="btn btn-primary" value="submit">
+<input type="submit" class="btn btn-primary" value="submit" >
 </form>
+</div>
+<br><br>
+
+<div class="jumbotron text-center" style="background-color: lightblue">
+    <h3 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; ">Current Reservations</h3>
+     <br>  <div style="  width: 20px; height: 20px; background-color: rosybrown; float: right; "></div> &nbsp;<h5 style="float: right; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black">Already Reserved&nbsp;&nbsp;</h5> &nbsp;
+&nbsp;
+<br>
+<form>
+    <div class="form-group">
+        
+        <input type="date" class="form-control" [(ngModel)]="date" name="date">
+      </div>
+    </form>
+      
+
+
+
+<table *ngIf="reservationlist" class="table table-hover table-striped table-responsive w-auto">
+  <thead>
+    
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Lab</th>
+      <th scope="col">08-09</th>
+      <th scope="col">09-10</th>
+      <th scope="col">10-11</th>
+      <th scope="col">11-12</th>
+      <th scope="col">12-01</th>
+      <th scope="col">01-02</th>
+      <th scope="col">02-03</th>
+      <th scope="col">03-04</th>
+      <th scope="col">04-05</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let x of reservationlist" >
+       
+    <tr *ngIf="x.timeslot == '08.00 A.M - 09.00 A.M' && x.date == date">
+      <td>#</td>
+      <td>{{x.labname}}</td>
+      <td style="background-color:rosybrown;"><h6 style="color: white;"></h6></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>    
+        </tr>
+
+      <tr *ngIf="x.timeslot == '09.00 A.M - 10.00 A.M' && x.date == date">
+          <td>#</td>
+          <td>{{x.labname}}</td>
+          <td ></td>
+          <td style="background-color:rosybrown;"><h6 style="color: white;"></h6></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>    
+            </tr>
+    
+             <tr *ngIf="x.timeslot == '10.00 A.M - 11.00 A.M' && x.date == date">
+          <td>#</td>
+          <td>{{x.labname}}</td>
+          <td ></td>
+          <td ></td>
+          <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>    
+            </tr>
+
+   <tr *ngIf="x.timeslot == '11.00 A.M - 12.00 P.M' && x.date == date">
+                <td>#</td>
+                <td>{{x.labname}}</td>
+                <td ></td>
+                <td ></td>
+                <td ></td>
+                <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                <td ></td>
+                <td ></td>
+                <td ></td>
+                <td ></td>
+                <td ></td>    
+                  </tr>
+
+                    <tr *ngIf="x.timeslot == '12.00 P.M - 01.00 P.M' && x.date == date">
+                        <td>#</td>
+                        <td>{{x.labname}}</td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>    
+                          </tr>
+
+                          <tr *ngIf="x.timeslot == '01.00 P.M - 02.00 P.M' && x.date == date">
+                              <td>#</td>
+                              <td>{{x.labname}}</td>
+                              <td ></td>
+                              <td ></td>
+                              <td ></td>
+                              <td ></td>
+                              <td ></td>
+                              <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                              <td ></td>
+                              <td ></td>
+                              <td ></td>    
+                                </tr>
+
+                                <tr *ngIf="x.timeslot == '02.00 P.M - 03.00 P.M' && x.date == date">
+                                    <td>#</td>
+                                    <td>{{x.labname}}</td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                                    <td ></td>
+                                    <td ></td>    
+                                      </tr>
+                                      <tr *ngIf="x.timeslot == '03.00 P.M - 04.00 P.M' && x.date == date">
+                                          <td>#</td>
+                                          <td>{{x.labname}}</td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td ></td>
+                                          <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                                          <td ></td>    
+                                            </tr>
+                                            <tr *ngIf="x.timeslot == '04.00 P.M - 05.00 P.M' && x.date == date">
+                                                <td>#</td>
+                                                <td>{{x.labname}}</td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td ></td>
+                                                <td style="background-color:rosybrown;"><h6 style="color: brown;"></h6></td>
+                                                    
+                                                  </tr> 
+                                                 
+                                           
+  </tbody>
+
+</table>
+
+
+</div>
+
+
+  
+
+ 
+
+
+
+
+
+
+      

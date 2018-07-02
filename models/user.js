@@ -56,3 +56,12 @@ module.exports.comparePassword = function(candidatePassword,hash,callback) {
         callback(null,isMatch); 
     });  
 }
+
+module.exports.getAllUsers = function(callback){
+    User.find({},callback);
+}
+
+module.exports.deleteUser = function(id,callback){
+    const query = {_id:id}
+    User.remove(query,callback);
+}

@@ -1,0 +1,62 @@
+
+
+<div class="jumbotron ">
+
+    <h2 class="page-header" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; text-align: center">All Reservations</h2><br>
+<table *ngIf="reservationlist" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Lab</th>
+        <th scope="col">Time Slot</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of reservationlist">
+        <th scope="row">#</th>
+        <td>{{x.date}}</td>
+        <td>{{x.labname}}</td>
+        <td>{{x.timeslot}}</td>
+        <td> <button type="button" class="btn btn-secondary" (click)="onShowOneReservation(x._id)" >Edit</button> &nbsp;  <button type="button" class="btn btn-danger"  (click)="onReservationDelete(x._id)">Delete</button></td>
+
+      </tr>
+      
+    </tbody>
+  </table>
+<br>
+
+  <button type="button" class="btn btn-info" (click)="downloadPDF()">Download PDF</button>
+
+</div><br><br>
+
+<div class="jumbotron">
+    <h2 class="page-header" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; text-align: center"> View reservations</h2><br>
+<form>
+    <input type="date" class="form-control" [(ngModel)]="date" name="date" >
+    <table *ngIf="reservationlist" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Lab</th>
+            <th scope="col">Time Slot</th>
+            
+          </tr>
+        </thead>
+        <tbody *ngFor="let x of reservationlist">
+          <tr *ngIf="x.date == date">
+            <th scope="row">#</th>
+            <td>{{x.date}}</td>
+            <td>{{x.labname}}</td>
+            <td>{{x.timeslot}}</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-info" (click)="downloadPDF2()">Download PDF</button>
+  </form>
+</div>

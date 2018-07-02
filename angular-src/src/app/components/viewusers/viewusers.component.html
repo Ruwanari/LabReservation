@@ -1,0 +1,23 @@
+<table *ngIf="userlist" class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of userlist">
+      <th scope="row">#</th>
+      <td>{{x.firstname}}</td>
+      <td>{{x.lastname}}</td>
+      <td>{{x.email}}</td>
+      <td>  <button type="button" class="btn btn-danger"  (click)="onUserDelete(x._id)">Delete</button></td>
+      
+    </tr>
+    
+  </tbody>
+</table>

@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule,Routes} from '@angular/router';
 
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,8 +18,13 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 
 import { NgFlashMessagesModule } from 'ng-flash-messages';
+import { AuthGuard } from './guards/auth.guard';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { ViewreservationComponent } from './components/viewreservation/viewreservation.component';
+import { ViewusersComponent } from './components/viewusers/viewusers.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ReportComponent } from './components/report/report.component';
+import { EditreservationComponent } from './components/editreservation/editreservation.component';
 
 const appRoutes:Routes = [ 
   {path:'',component:HomeComponent},
@@ -26,7 +33,10 @@ const appRoutes:Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'profile',component:ProfileComponent},
   {path:'reservation',component:ReservationComponent},
-  {path:'viewreservation',component:ViewreservationComponent}
+  {path:'viewreservation',component:ViewreservationComponent},
+  {path:'viewusers',component:ViewusersComponent},
+  {path:'report',component:ReportComponent},
+  {path:'editreservation/:id',component:EditreservationComponent}
 ]
 @NgModule({
   declarations: [
@@ -39,6 +49,10 @@ const appRoutes:Routes = [
     ProfileComponent,
     ReservationComponent,
     ViewreservationComponent,
+    ViewusersComponent,
+    FooterComponent,
+    ReportComponent,
+    EditreservationComponent,
     
   ],
   imports: [
@@ -46,13 +60,13 @@ const appRoutes:Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    NgFlashMessagesModule
+    NgFlashMessagesModule,
     
     
    
    
   ],
-  providers:[ValidateService,AuthService],
+  providers:[ValidateService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 

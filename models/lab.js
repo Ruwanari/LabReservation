@@ -33,4 +33,13 @@ module.exports.addLab = function(newLab,callback) {
     
 }
 
+module.exports.getAllLabs = function(callback){
+    Lab.find({},callback);
+}
+
+module.exports.deleteLab = function(id,callback){
+    const query = {_id:id}
+    Lab.remove(query,callback);
+}
+
 

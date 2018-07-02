@@ -23,26 +23,7 @@ module.exports = function(passport){
             }
         });
 
-        Lab.getLabById(jwt_payload.data._id,(err,lab) => {
-            if(err){
-                return done(err,false);
-            } 
-            if(lab) {
-                return done(null,lab);
-            } else {
-                return done(null,false);
-            }
-        });
-        Reservation.getReservationById(jwt_payload.data._id,(err,reservation) => {
-            if(err){
-                return done(err,false);
-            } 
-            if(reservation) {
-                return done(null,reservation);
-            } else {
-                return done(null,false);
-            }
-        });
+        
 
     }));
 }

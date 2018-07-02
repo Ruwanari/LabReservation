@@ -33,4 +33,26 @@ module.exports.addReservation = function(newReservation,callback) {
     
 }
 
+module.exports.getAllReservations = function(callback){
+    Reservation.find({},callback);
+}
 
+module.exports.checkConflict = function(callback){
+    Reservation.find({},callback);
+}
+
+module.exports.deleteReservation = function(id,callback){
+    const query = {_id:id}
+    Reservation.remove(query,callback);
+}
+
+
+module.exports.editReservation = function(id,eReservation,callback) {
+    const query = {_id:id}
+    eReservation.update(query);
+}
+
+module.exports.getOneReservation = function(id,callback){
+    const query = {_id:id}
+    Reservation.findOne(query,callback);
+}

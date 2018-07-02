@@ -1,4 +1,6 @@
-<h2 class="header">Admin</h2>
+
+<div class="jumbotron ">
+    <h2 class="page-header" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; text-align: center">Add new Lab</h2><br>
 <form (submit)="OnAddNewLabSubmit()">
 <div class="form-group">
   <label>Lab name</label>
@@ -8,12 +10,36 @@
     <label>Amount of Students</label>
     <input type="number" class="form-control" [(ngModel)]="amount" name="amount">
     </div>
+    
 <input type="submit" class="btn btn-primary" value="Add Lab">
 
 </form>
+</div>
+<br><br><br>
 
-
-
+<div class="jumbotron ">
+    <h2 class="page-header" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; text-align: center">Current Labs</h2><br>
+<table *ngIf="lablist" class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Lab Name</th>
+      <th scope="col">Student Amount</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of lablist">
+      <th scope="row">#</th>
+      <td>{{x.labname}}</td>
+      <td>{{x.amount}}</td>
+      <td> <button type="button" class="btn btn-danger"  (click)="onLabDelete(x._id)">Delete</button></td>
+      
+    </tr>
+    
+  </tbody>
+</table>
+</div>
 
 
 

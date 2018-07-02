@@ -65,10 +65,32 @@ router.post('/authentication',(req,res ,next) => {
 
 
 
+
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     res.json({user: req.user});
   });
 
+  router.get('/allusers',(req,res,next)=>{
+    User.getAllUsers((err,userlist)=>{
+        if(err){
+            res.json({success:false,msg:"Something went wrong"});
+        }else{
+             res.json({success:true,userlist:userlist});
+         }
+        
+    });
+})
 
+router.delete('/:id',(req,res,next)=>{
+    const id = req.params.id;
+ User.deleteUser(id,(err,user)=>{
+     if(err){
+         res.json({success:false,msg:"Something went wrong"})
+     }else{
+          res.json({success:true,msg:"Deleted successfully"});
+      }
+     
+ });
+});
 
 module.exports = router;

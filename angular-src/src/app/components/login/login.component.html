@@ -1,13 +1,17 @@
-<h2 class="header">Login</h2>
-<form (submit)="OnLoginSubmit()">
+
+<div class="jumbotron text-center">
+<div class="panel panel-default">
+<h2 style="text-align: left; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: black; text-align: center" class=" panel-heading">Login</h2></div>
+<br><form (submit)="OnLoginSubmit()">
 <div class="form-group">
-  <label>Email</label>
-  <input type="text" class="form-control" [(ngModel)]="email" name="email">
+  
+  <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Email">
   </div>
   <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" [(ngModel)]="password" name="password">
+    
+    <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
     </div>
 <input type="submit" class="btn btn-primary" value="Login">
 
 </form>
+</div>

@@ -21,6 +21,31 @@ router.post('/dashboard',(req,res,next) => {
             }
         });
    });
+
+   router.get('/alllabs',(req,res,next)=>{
+       Lab.getAllLabs((err,lablist)=>{
+           if(err){
+               res.json({success:false,msg:"Something went wrong"});
+           }else{
+                res.json({success:true,lablist:lablist});
+            }
+           
+       });
+   });
+
+   router.delete('/:id',(req,res,next)=>{
+       const id = req.params.id;
+    Lab.deleteLab(id,(err,lab)=>{
+        if(err){
+            res.json({success:false,msg:"Something went wrong"})
+        }else{
+             res.json({success:true,msg:"Deleted successfully"});
+         }
+        
+    });
+});
+
+
 /*
 router.post('/authentication',(req,res ,next) => {
     

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
 import {map} from 'rxjs/operators';
+import {Profile} from 'selenium-webdriver/firefox';
 import {JwtHelperService} from '@auth0/angular-jwt';
+
 
 
 @Injectable({
@@ -10,7 +12,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class AuthService {
   authToken:any;
   user:any;
-  reservation:any;
+
 
   constructor(
     private http:Http,
@@ -78,15 +80,42 @@ viewReservations(){
     this.authToken = token;
   }
 
+  loadUser(){
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
   loggedIn(){
-    const helper = new JwtHelperService();
-    return helper.isTokenExpired(localStorage.id_token);
+    if(localStorage.id_token == undefined){
+      return true;
+    } else {
+      const helper = new JwtHelperService();
+      // console.log(helper.isTokenExpired(localStorage.id_token));
+      return helper.isTokenExpired(localStorage.id_token);
+      
+    }
+   
   }
 
  logout(){
    this.authToken=null;
    this.user=null;
    localStorage.clear();
+ }
+
+ isAdminLogged(){
+   const user = this.loadUser();
+   if(user == null){
+     return false;
+   } 
+   else{
+     const email = user.email;
+     if(email == "annejones@gmail.com"){
+       return true;
+     }
+     else{
+       return false;
+     }
+   }
  }
 
   

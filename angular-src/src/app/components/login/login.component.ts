@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             timeout: 5000,
             type: 'success'
            });
-           this.router.navigate(['/dashboard']);
+           this.router.navigate(['/']);
 
 
         } else {

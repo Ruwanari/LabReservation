@@ -1,8 +1,11 @@
+
+<div class="jumbotron text-center " style="background-image: url('http://backgroundcheckall.com/wp-content/uploads/2017/12/youtube-profile-picture-background-8.jpg')">
 <div *ngIf= "user">
-  <h2 class="page-header"> {{user.firstname}}</h2>
+  <h2 class="page-header" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">  {{user.firstname}} {{user.lastname}}</h2>
  <ul class="list-group">
-   <li class="list-group-item">Username: {{user.username}}</li>
-   <li class="list-group-item">Email: {{user.email}}</li>
+   <li class="list-group-item" style="background-color: lightgray ; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Username:   {{user.username}}</li>
+   <li class="list-group-item" style="background-color: lightgray; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Email:   {{user.email}}</li>
  </ul>
 
+</div>
 </div>
